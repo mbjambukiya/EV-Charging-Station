@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "di1G2DQlNMLOVBBGJCbXQ/vMNN6bjyd8kZ74vE8hi9k=",
+  "Source": "EVChargingStationApi",
+  "BasePath": "_content/EVChargingStationApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,46 @@
+<select class="form-select" aria-label="Default select example" (change)="getChargingSockets()"
+    [(ngModel)]="selectedSite">
+    <option selected value="0">Select Site</option>
+    <option value="{{site.siteId}}" *ngFor="let site of sitesList">{{site.siteName}}</option>
+</select>
+
+<br>
+<br>
+
+<div>
+    <div class="row g-3">
+        <div class="col-4" *ngFor="let socket of chargingSocketsList">
+            <div class="card">
+                <div class="card-body">
+                    <p>{{socket.chargingSocketId}}</p>
+                    <button class="btn btn-primary btn-sm me-2" *ngIf="!socket.isLocked"
+                        (click)="lockSocket(socket.chargingSocketId)">Lock (Start Charging)</button>
+                    <button class="btn btn-primary btn-sm" *ngIf="socket.isLocked"
+                        (click)="unLockSocket(socket.chargingSocketId)">Unlock (Complete Charging)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3 my-3" *ngIf="receipt">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                Reciept
+            </div>
+            <div class="card-body">
+                <p>TransactionId : {{receipt.transactionId}}</p>
+                <p>Username : {{receipt.username}}</p>
+                <p>Charging Socket : {{receipt.chargingSocketId}}</p>
+                <p>Site : {{receipt.siteName}}</p>
+                <p>Start time : {{receipt.startTime|date:'medium'}}</p>
+                <p>End time : {{receipt.endTime|date:'medium'}}</p>
+                <p>Total duration (Minutes) : {{receipt.duration|currency:'INR'}}</p>
+                <p>Charges per hour : {{receipt.chargesPerHr|currency:'INR'}}</p>
+                <p>Total Amount : {{receipt.totalAmount|currency:'INR'}}</p>
+                <button class="btn btn-primary btn-sm" (click)="hideReceipt()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
